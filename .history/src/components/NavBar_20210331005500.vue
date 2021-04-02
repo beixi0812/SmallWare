@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <!-- 导航栏头部 -->
-    <div class="nav-heade" :class="{ active: active }">
+    <div class="nav-heade">
       <!-- 导航logo -->
       <div class="logo" @click="$router.push('/')"></div>
       <!-- 登录/注册 -->
@@ -26,7 +26,7 @@
       </div>
     </div>
     <!-- 导航栏底部 -->
-    <div class="nav-footer" :class="{ 'active-footer': active }">
+    <div class="nav-footer">
       <div class="nav-footer-conter">
         <!-- 男生 -->
         <div class="conter-boy">
@@ -40,7 +40,7 @@
               <li v-for="(item, index) in boylist" :key="index">
                 <a href="">
                   <!-- <img src="../assets/img/index/ia_100000041.jpg" alt=""> -->
-                  <img v-lazy="item.img" alt="" />
+                  <img v-lazy="item.img" :src="item.img" alt="" />
                 </a>
                 <p>{{ item.name }}</p>
               </li>
@@ -178,6 +178,24 @@ export default {
       res = res.reverse();
       return res;
     },
+
+    BackToTop() {
+      $("html,body").animate({ scrollTop: 0 }, 700);
+    },
+    handleScroll() {
+      var scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      console.log(scrollTop);
+      if (scrollTop > 100) {
+        $(".gototop").fadeIn(500);
+      }
+    },
+  },
+  mounted() {
+    // handleScroll为页面滚动的监听回调
+    window.addEventListener("scroll", this.handleScroll);
   },
 };
 </script>

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+// import VueRouter from 'vue-router'
 import Login from "../views/Login.vue"
 import { GET_LOCAL_ITEM } from "../utils/utils.js"
 
@@ -84,13 +84,13 @@ router.beforeEach((to, from, next) => {
   }
 })
 //后置路由守卫,在路由成功跳转之后才调用;
-router.afterEach((to, from) => {
-  console.log(to.meta.title);
-  if (to.meta.title) {
-    document.title = to.meta.title;
-  } else {
-    document.title = 'once';
-  }
-  console.log(from);
-})
+// router.afterEach((to,from)=>{
+//   console.log(to.meta.title);
+//   if(to.meta.title){
+//     document.title = to.meta.title;
+//   }else{
+//     document.title = '蓝鲸';
+//   }
+//   console.log(from);
+// })
 export default router

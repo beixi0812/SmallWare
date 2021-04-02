@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <!-- 导航栏头部 -->
-    <div class="nav-heade" :class="{ active: active }">
+    <div class="nav-heade">
       <!-- 导航logo -->
       <div class="logo" @click="$router.push('/')"></div>
       <!-- 登录/注册 -->
@@ -26,7 +26,7 @@
       </div>
     </div>
     <!-- 导航栏底部 -->
-    <div class="nav-footer" :class="{ 'active-footer': active }">
+    <div class="nav-footer">
       <div class="nav-footer-conter">
         <!-- 男生 -->
         <div class="conter-boy">
@@ -37,10 +37,10 @@
           <!-- 滑动列表 -->
           <div class="conter-childern">
             <ul>
-              <li v-for="(item, index) in boylist" :key="index">
-                <a href="">
+              <li v-for="(item, index) in boylist" :key="index" >
+                <a href=''>
                   <!-- <img src="../assets/img/index/ia_100000041.jpg" alt=""> -->
-                  <img v-lazy="item.img" alt="" />
+                  <img :src="item.img" alt="" />
                 </a>
                 <p>{{ item.name }}</p>
               </li>
@@ -57,7 +57,7 @@
           <div class="conter-childern">
             <ul>
               <li v-for="(item, index) in girllist" :key="index">
-                <a href=""><img :src="item.img" alt="" /></a>
+                <a href=''><img :src="item.img" alt="" /></a>
                 <p>{{ item.name }}</p>
               </li>
             </ul>
@@ -140,6 +140,14 @@ export default {
     this.noodList(184).then((res) => (this.girllist = res));
   },
   methods: {
+    // todie(){
+    //   this.$router.push({
+    //     path:'/detail',
+    //     query:{
+    //       id:item.id
+    //     }
+    //   })
+    // },
     //男生列表
     async resList(id) {
       let res = await goodslist({
@@ -153,7 +161,7 @@ export default {
         return {
           img: ele.s_goods_photos[0].path,
           name: ele.name,
-          id: ele.id,
+          id:ele.id
         };
       });
       res = res.reverse();
@@ -177,6 +185,7 @@ export default {
       });
       res = res.reverse();
       return res;
+      
     },
   },
 };

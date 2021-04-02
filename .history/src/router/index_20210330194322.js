@@ -60,6 +60,14 @@ const routes = [
       title: '支付订单'
     }
   }
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  // } 
 ]
 
 const router = new VueRouter({
@@ -84,13 +92,13 @@ router.beforeEach((to, from, next) => {
   }
 })
 //后置路由守卫,在路由成功跳转之后才调用;
-router.afterEach((to, from) => {
-  console.log(to.meta.title);
-  if (to.meta.title) {
-    document.title = to.meta.title;
-  } else {
-    document.title = 'once';
-  }
-  console.log(from);
-})
+// router.afterEach((to,from)=>{
+//   console.log(to.meta.title);
+//   if(to.meta.title){
+//     document.title = to.meta.title;
+//   }else{
+//     document.title = '蓝鲸';
+//   }
+//   console.log(from);
+// })
 export default router
