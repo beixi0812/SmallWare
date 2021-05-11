@@ -17,7 +17,7 @@
           <p>收货信息:</p>
         </div>
         <div class="body-right">
-          <p>应付总额: 4882<span></span></p>
+          <p>应付总额: 562<span></span></p>
           <div @click="isActive = !isActive">
             订单详情<b class="el-icon-arrow-down"></b>
           </div>
@@ -25,9 +25,7 @@
         <div class="body-content" v-show="isActive">
           <div class="body-details">
             <p>订单号:1263021458<span></span></p>
-            <p>姓名：刘泽坚</p>
-            <p>联系电话：13924779260</p>
-            <p>收货地址:广东省广州市增城区广州松田学院<span></span></p>
+            <p>收货地址:广东省广州市天河区<span></span></p>
             <div class="item-name">
               <p>商品名称:1970s</p>
               <div>

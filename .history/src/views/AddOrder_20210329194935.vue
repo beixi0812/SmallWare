@@ -73,35 +73,35 @@
           <div>¥{{ el.num * el.price }}</div>
         </div>
       </div>
-      <div class="message-settle">
-        <div class="message-left">
-          <div>
-            <p>需要帮助吗?</p>
-            <ul>
-              <li>如何确保订单安全?</li>
-              <li>我可以使用什么付款方式?</li>
-              <li>如何进行退换货?</li>
-              <li>更多帮助</li>
-            </ul>
-          </div>
-          <a href="/#/">继续购物</a>
+       <div class="message-settle">
+                    <div class="message-left">
+                        <div>
+                            <p>需要帮助吗?</p>
+                            <ul>
+                                <li>如何确保订单安全?</li>
+                                <li>我可以使用什么付款方式?</li>
+                                <li>如何进行退换货?</li>
+                                <li>更多帮助</li>
+                            </ul>
+                        </div>
+                        <a href="/#/">继续购物</a>
+                    </div>
+                    <div class="message-right">
+                        <div>
+                            <p>店铺优惠:</p>
+                            <b>￥0.00</b>
+                        </div>
+                        <div>
+                            <p>运费:</p>
+                            <b>￥0.00</b>
+                        </div>
+                        <div>
+                            <p>订单总计:</p>
+                            <b>{{total}}</b>
+                        </div>
+                        <button @click="orderSubmit">去结算</button>
+                    </div>
         </div>
-        <div class="message-right">
-          <div>
-            <p>店铺优惠:</p>
-            <b>￥0.00</b>
-          </div>
-          <div>
-            <p>运费:</p>
-            <b>￥0.00</b>
-          </div>
-          <div>
-            <p>订单总计:</p>
-            <b>￥：4882</b>
-          </div>
-          <button @click="orderSubmit">去结算</button>
-        </div>
-      </div>
     </div>
     <!-- visible：表示是否打开弹窗 -->
     <!-- 修改地址弹窗 -->
@@ -183,8 +183,8 @@ export default {
   },
   methods: {
     //跳转支付页面
-    orderSubmit() {
-      this.$router.push("/payment");
+    orderSubmit(){
+      this.$router.push('/payment')
     },
     async placeOrder() {
       // console.log(createOrder);
@@ -194,21 +194,22 @@ export default {
           num: el.num,
         };
       });
-      let shoppingCartIds = this.selectedList.map((el) => el.cart_id);
-      console.log(goods_info, shoppingCartIds, this.currentAddressId);
+      let shoppingCartIds = this.selectedList.map((el)=>el.cart_id)
+      console.log(goods_info,shoppingCartIds,this.currentAddressId);
       let paramsData = {
         goods_info,
         shoppingCartIds,
-        addr_id: this.currentAddressId,
-      };
-      createOrder(paramsData).then((res) => {
+        addr_id:this.currentAddressId
+      }
+      createOrder(paramsData).then((res)=>{
         this.$message({
-          message: "下单成功",
-          type: "success",
+          message:"下单成功",
+          type:"success"
         });
         //跳转至其他地方
-        console.log(res, "生成订单");
-      });
+        console.log(res,"生成订单");
+      })
+      
     },
     selecteArr(idx) {
       // 通过下标切换地址栏
@@ -288,10 +289,10 @@ export default {
         return state.cartList.filter((el) => el.checked);
       },
     }),
-    total() {
-      return this.selectedList.reduce((el, sum) => {
-        return (sum += el.num * el.price);
-      }, 0);
+    total(){
+      return this.selectedList.reduce((el,sum)=>{
+        return (sum+=el.num * el.price)
+      },0)
     },
     //用户选中的地址
     currentAddressId() {
@@ -461,87 +462,86 @@ export default {
         }
       }
     }
-    .message-settle {
-      margin-top: 50px;
-      display: flex;
-      justify-content: space-between;
-      .message-left {
-        div {
-          width: 300px;
-          height: 155px;
-          padding: 20px;
-          border: 1px solid #b2b2b2;
-          margin-bottom: 10px;
-          p {
-            padding-bottom: 10px;
-          }
-          ul {
-            li {
-              display: flex;
-              align-items: center;
-              line-height: 20px;
-              &::before {
-                content: "";
-                height: 3px;
-                width: 3px;
-                display: inline-block;
-                background: #333;
-                margin-right: 5px;
-              }
-            }
-          }
-        }
-        a {
-          text-align: center;
-          width: 300px;
-          line-height: 50px;
-          font-size: 18px;
-          color: #333;
-          text-align: center;
-          border: 1px solid #999;
-          cursor: pointer;
-        }
-      }
-      .message-right {
-        div {
-          padding-top: 5px;
-          display: flex;
-          justify-content: space-between;
-          p {
-            font-size: 18px;
-          }
-          b {
-            font-size: 19px;
-            margin-top: 18px;
-          }
-        }
-        div:nth-child(2) {
-          b {
-            color: #b83530;
-          }
-        }
-        div:nth-child(4) {
-          padding-top: 25px;
-          p,
-          b {
-            font-size: 24px;
-          }
-          b {
-            color: #b83530;
-          }
-        }
-      }
-      button {
-        width: 200px;
-        height: 50px;
-        color: white;
-        background: #b63330;
-        text-align: center;
-        line-height: 50px;
-        margin-left: 40px;
-        margin-top: 30px;
-      }
-    }
+    .message-settle{
+                    margin-top: 50px;
+                    display: flex;
+                    justify-content: space-between;
+                    .message-left{
+                        div{
+                            width: 300px;
+                            height: 155px;
+                            padding: 20px;
+                            border: 1px solid #b2b2b2;
+                            margin-bottom: 10px;
+                            p{
+                                padding-bottom: 10px;
+                            }
+                            ul{
+                                li{
+                                    display: flex;
+                                    align-items: center;
+                                    line-height: 20px;
+                                    &::before{
+                                        content: '';
+                                        height: 3px;
+                                        width: 3px;
+                                        display: inline-block;
+                                        background: #333;
+                                        margin-right: 5px;
+                                    }
+                                }
+                            }
+                        }
+                        a{
+                            text-align: center;
+                            width: 300px;
+                            line-height: 50px;
+                            font-size: 18px;
+                            color: #333;
+                            text-align: center;
+                            border: 1px solid #999;
+                            cursor: pointer;
+                        }
+                    }
+                    .message-right{
+                        div{
+                            padding-top: 5px;
+                            display: flex;
+                            justify-content: space-between;
+                            p{
+                                font-size: 18px;
+                            }
+                            b{
+                                font-size: 19px;
+                                margin-top: 18px;
+                            }
+                        }
+                        div:nth-child(2){
+                            b{
+                                color: #b83530;
+                            }
+                        }
+                        div:nth-child(4){
+                            padding-top: 25px;
+                            p,b{
+                                font-size: 24px;
+                            }
+                            b{
+                                color:#b83530;
+                            }
+                        }
+                    }
+                    button{
+                        width: 200px;
+                        height: 50px;
+                        color: white;
+                        background: #b63330;
+                        text-align: center;
+                        line-height: 50px;
+                        margin-left: 40px;
+                        margin-top: 30px;
+                    }
+                }
   }
   .Tist {
     margin-top: 213px;
